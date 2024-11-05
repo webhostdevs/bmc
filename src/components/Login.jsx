@@ -97,7 +97,7 @@ function AuthForm({ onClose }) {
     setSuccessMessage('');
   };
 
- const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Basic validation
@@ -129,19 +129,14 @@ function AuthForm({ onClose }) {
         });
 
         const result = await response.json();
-        // Check if result is not null and has a success property
+        
         if (result && typeof result.success === 'boolean') {
             if (result.success) {
-                setSuccessMessage(`${isLogin ? 'Login' : 'Signup'} successful!`);
-                // Redirect to the admin page after login
-                if (isLogin && result.redirect_url) {
-                    window.location.href = result.redirect_url;
-                } else {
-                    onClose(); // Close form for signup or if no redirect URL is provided
-                    alert(`${isLogin ? 'Login' : 'Signup'} successful!`);
-                }
+                alert(`${isLogin ? 'Login' : 'Signup'} successful!`);
+                
+                // Instead of redirecting, load the home page
+                window.location.href = '/'; // Replace with the actual path to your home page
             } else {
-                // Set error message if success is false
                 setErrorMessage(result.message || 'An error occurred');
             }
         } else {
