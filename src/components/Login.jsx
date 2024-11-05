@@ -21,7 +21,7 @@ const Login = () => {
         })
         .then(response => {
             if (response.ok) {
-                window.location.href = 'http://localhost:5173/';
+                window.location.href = '/';
             } else {
                 alert('Login failed');
             }
