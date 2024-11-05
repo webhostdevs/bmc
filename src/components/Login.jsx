@@ -77,8 +77,7 @@ const Login = () => {
         </div>
     );
 };
-
-// export default Login;
+export default Login;
 // import React, { useState } from 'react';
 
 // function AuthForm({ onClose }) {
