@@ -36,7 +36,7 @@ function Navbar({ searchTerm, setSearchTerm, toggleAuthForm, isLoggedIn, setLogg
             </Link>  
 
             <button 
-              onClick={toggleAuthForm} 
+              onClick={toggleLogin} 
               className="flex items-center bg-gray-800 text-white px-4 py-1 hover:bg-gray-900 transition"
               aria-label="Login"
             >
