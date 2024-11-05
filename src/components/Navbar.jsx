@@ -36,15 +36,14 @@ function Navbar({ searchTerm, setSearchTerm, toggleAuthForm, isLoggedIn, setLogg
             </Link> 
             
 
-             <Link to="/login >
-            <button 
-               
-              className="flex items-center bg-gray-800 text-white px-4 py-1 hover:bg-gray-900 transition"
-              aria-label="Login"
-            >
-              <i className="fas fa-user mr-2"></i> Login
-            </button>
-       </Link> 
+              <Link to="/login">
+              <button 
+                className="flex items-center bg-gray-800 text-white px-4 py-1 hover:bg-gray-900 transition"
+                aria-label="Login"
+              >
+                <i className="fas fa-user mr-2"></i> Login
+              </button>
+            </Link> 
           </>
         ) : (
           <>
