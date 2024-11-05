@@ -45,7 +45,7 @@ function AuthConsumer({ searchTerm, setSearchTerm }) {
         <Route path="/admin" element={<NewVendor />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/Signup" element={<Signup />} />
+        <Route path="/sign-up" element={<Signup />} />
       </Routes>
 
       {/* Display AuthForm only if showAuthForm is true */}
