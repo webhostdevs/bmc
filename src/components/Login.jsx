@@ -96,55 +96,61 @@ function AuthForm({ onClose }) {
     setSuccessMessage('');
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Basic validation
     if ((!isLogin && !username) || !email || !password) {
-      setErrorMessage('Please provide all required fields');
-      return;
+        setErrorMessage('Please provide all required fields');
+        return;
     }
 
     if (!isLogin && password !== retypePassword) {
-      setErrorMessage('Passwords do not match');
-      return;
+        setErrorMessage('Passwords do not match');
+        return;
     }
 
     const url = isLogin
-      ? 'https://bookmycater.freewebhostmost.com/login.php'
-      : 'https://bookmycater.freewebhostmost.com/signup.php';
+        ? 'https://bookmycater.freewebhostmost.com/login.php'
+        : 'https://bookmycater.freewebhostmost.com/signup.php';
 
     const payload = isLogin
-      ? { email, password }
-      : { username, email, password };
+        ? { email, password }
+        : { username, email, password };
 
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
 
-      const result = await response.json();
-      if (result.success) {
-        setSuccessMessage(`${isLogin ? 'Login' : 'Signup'} successful!`);
-        
-        // Redirect to the admin page after login
-        if (isLogin && result.redirect_url) {
-          window.location.href = result.redirect_url;
+        const result = await response.json();
+        // Check if result is not null and has a success property
+        if (result && typeof result.success === 'boolean') {
+            if (result.success) {
+                setSuccessMessage(`${isLogin ? 'Login' : 'Signup'} successful!`);
+                // Redirect to the admin page after login
+                if (isLogin && result.redirect_url) {
+                    window.location.href = result.redirect_url;
+                } else {
+                    onClose(); // Close form for signup or if no redirect URL is provided
+                    alert(`${isLogin ? 'Login' : 'Signup'} successful!`);
+                }
+            } else {
+                // Set error message if success is false
+                setErrorMessage(result.message || 'An error occurred');
+            }
         } else {
-          onClose(); // Close form for signup or if no redirect URL is provided
-          alert(`${isLogin ? 'Login' : 'Signup'} successful!`);
+            setErrorMessage('Unexpected response from the server');
         }
-      } else {
-        setErrorMessage(result.message || 'An error occurred');
-      }
     } catch (error) {
-      setErrorMessage('An error occurred during the request');
+        setErrorMessage('An error occurred during the request');
     }
-  };
+};
+
 
   return (
     <div className="relative">
