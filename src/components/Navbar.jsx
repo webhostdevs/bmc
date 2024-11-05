@@ -1,13 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar({ searchTerm, setSearchTerm, toggleAuthForm, isLoggedIn, setLoggedIn }) {
+  const navigate = useNavigate(); // Use useNavigate for redirection
+
   const handleLogout = () => {
     // Handle logout logic here
     setLoggedIn(false);
     alert('Logged out successfully');
-    // Optionally, redirect to a specific page or clear user session
-    // window.location.href = '/login'; // Uncomment if you want to redirect
+    
+    // Optional: clear user session data if needed
+    // localStorage.removeItem('user'); // Uncomment if you're using local storage for user info
+
+    // Redirect to login page or homepage
+    navigate('/login'); // Redirect to login after logout
   };
 
   return (
@@ -34,9 +40,7 @@ function Navbar({ searchTerm, setSearchTerm, toggleAuthForm, isLoggedIn, setLogg
             <Link to="/contactus" className="text-gray-700 hover:text-black transition">
               Contact
             </Link> 
-            
-
-              <Link to="/login">
+            <Link to="/login">
               <button 
                 className="flex items-center bg-gray-800 text-white px-4 py-1 hover:bg-gray-900 transition"
                 aria-label="Login"
@@ -50,7 +54,6 @@ function Navbar({ searchTerm, setSearchTerm, toggleAuthForm, isLoggedIn, setLogg
             <Link to="https://bookmycater.freewebhostmost.com/admin.html" className="text-gray-700 hover:text-black transition">
               New Vendor
             </Link> 
-
             <button 
               onClick={handleLogout} 
               className="flex items-center text-gray-700 hover:text-black transition"
