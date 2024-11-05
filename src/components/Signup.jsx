@@ -8,7 +8,7 @@ const Signup = () => {
     const handleSignup = (e) => {
         e.preventDefault();
     
-        fetch('http://localhost/auth0/signup.php', {
+        fetch('https://bookmycater.freewebhostmost.com/signup.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
