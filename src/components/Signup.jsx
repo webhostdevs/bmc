@@ -4,14 +4,21 @@ const Signup = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [retypePassword, setRetypePassword] = useState('');
 
     const handleSignup = (e) => {
         e.preventDefault();
-    
+
+        // Check if passwords match
+        if (password !== retypePassword) {
+            alert("Passwords do not match");
+            return;
+        }
+
         fetch('https://bookmycater.freewebhostmost.com/signup.php', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                 'Content-Type': 'application/json',
             },
             body: new URLSearchParams({
                 'username': username,
@@ -29,7 +36,6 @@ const Signup = () => {
         });
     };
     
-
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
             <form 
@@ -43,7 +49,7 @@ const Signup = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
-                    className="border  border-gray-300 p-2 rounded mb-4 w-full"
+                    className="border border-gray-300 p-2 rounded mb-4 w-full"
                 />
                 <input
                     type="email"
@@ -58,6 +64,14 @@ const Signup = () => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="border border-gray-300 p-2 rounded mb-4 w-full"
+                />
+                <input
+                    type="password"
+                    placeholder="Retype Password"
+                    value={retypePassword}
+                    onChange={(e) => setRetypePassword(e.target.value)}
                     required
                     className="border border-gray-300 p-2 rounded mb-4 w-full"
                 />
