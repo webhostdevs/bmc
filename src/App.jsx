@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import HomePage from "./components/HomePage";
 import VendorDetails from "./components/VendorDetails";
 import Navbar from "./components/Navbar";
-// import AuthForm from "./components/AuthForm";
+import AuthForm from "./components/AuthForm";
 import ContactForm from "./components/ContactUs";
 import "./App.css";
 import Footer from "./components/Footer";
