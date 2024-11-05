@@ -64,12 +64,13 @@ const Login = () => {
             {!isAuthenticated && (
                 <div className="mt-4 text-center">
                     <p className="text-gray-700">Don't have an account?</p>
-                    <a 
-                        href="/Signup" 
+                      <Link to="/signup">
+                    <a  
                         className="text-blue-500 hover:underline"
                     >
                         Sign up here
                     </a>
+                     </Link> 
                 </div>
             )}
         </div>
