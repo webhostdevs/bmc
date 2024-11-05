@@ -9,7 +9,7 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
     
-        fetch('http://localhost/auth0/login.php', {
+        fetch('https://bookmycater.freewebhostmost.com/login.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
