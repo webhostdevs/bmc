@@ -36,7 +36,7 @@ function Navbar({ searchTerm, setSearchTerm, toggleAuthForm, isLoggedIn, setLogg
             </Link> 
             
 
-             <Link to="/login
+             <Link to="/login >
             <button 
                
               className="flex items-center bg-gray-800 text-white px-4 py-1 hover:bg-gray-900 transition"
