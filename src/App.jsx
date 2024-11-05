@@ -9,7 +9,7 @@ import "./App.css";
 import Footer from "./components/Footer";
 import NewVendor from "./components/NewVendor";
 import EventsPage from "./components/EventsPage.jsx";
-import Login from "./components/Login.jsx";
+import AuthForm from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
 import { AuthProvider, AuthContext } from './AuthContext';
 
@@ -44,7 +44,7 @@ function AuthConsumer({ searchTerm, setSearchTerm }) {
         <Route path="/contactus" element={<ContactForm />} />
         <Route path="/admin" element={<NewVendor />} />
         <Route path="/events" element={<EventsPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<AuthForm />} />
         <Route path="/sign-up" element={<Signup />} />
       </Routes>
 
