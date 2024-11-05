@@ -29,7 +29,7 @@ const Signup = () => {
         .then(response => {
             if (response.ok) {
                 // Redirect to login page after signup
-                window.location.href = '/login';
+                window.location.href = '/';
             } else {
                 alert('Signup failed');
             }
